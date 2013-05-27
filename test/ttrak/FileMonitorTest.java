@@ -16,7 +16,7 @@ public class FileMonitorTest
     @Test
     public void testOpensFile()
     {
-        FileMonitor fm = new FileMonitor();
+//        FileMonitor fm = new FileMonitor();
         
     }
 
