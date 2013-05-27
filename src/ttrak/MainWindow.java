@@ -20,7 +20,7 @@ import ttrak.MainWindowLogic.ViewType;
 
 public class MainWindow 
 {
-
+    static File file;
     private JFrame frmTaskTracker;
     private JTextArea taMain;
     private MainWindowLogic logic;
@@ -30,6 +30,21 @@ public class MainWindow
      */
     public static void main(String[] args)
     {
+        if(args.length != 1)
+        {
+            System.out.println("Please provide a file to monitor.");
+            System.out.flush();
+            return;
+        }
+        
+        file = new File(args[0]);
+        if(!file.exists())
+        {
+            System.out.println("File not found.");
+            System.out.flush();
+            return;
+        }
+        
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Throwable e) {
@@ -59,7 +74,7 @@ public class MainWindow
     {
         initialize();
         logic = new MainWindowLogic(this);
-        logic.initialize(new File("test.txt"));
+        logic.initialize(file);
     }
 
     /**
